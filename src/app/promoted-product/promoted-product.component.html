@@ -1,1 +1,8 @@
-<div> PROMOTED: {{ element.name }} Cena:{{ element.price }}</div>
+<div>
+  PROMOTED:
+  {{ element.name }}
+  Cena:{{ element.price }}
+  <span *ngFor="let tag of element.tags">*
+    <span class={{tag}}>{{tag}}</span>*
+  </span>
+</div>
