@@ -10,7 +10,10 @@ export class AppComponent implements OnInit {
 
   readonly productList: Product[] = [
     { name: "aa", price: 10, promoted: false, tags: ["tani", "brzydki"] },
-    { name: "bb", price: 100, promoted: true }
+    { name: "bb", price: 100, promoted: true },
+    { name: "AA", price: 100, promoted: true },
+    { name: "BB", price: 100, promoted: true },
+    { name: "aAbbAC", price: 10.0, promoted: false, tags: ["brzydki"] },
   ]
 
   filteredProductList: Product[] = [
@@ -22,6 +25,6 @@ export class AppComponent implements OnInit {
 
   onNewFilter(data) {
     console.log(data)
-    this.filteredProductList = this.productList.filter(element => element.name.match(data))
+    this.filteredProductList = this.productList.filter(element => element.name.toLowerCase().match(data.toLowerCase()))
   }
 }
