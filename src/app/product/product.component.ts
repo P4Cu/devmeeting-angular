@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from '../models'
+
+let productList : Product[] = [
+  { name: "aa", promoted: false},
+  { name: "bb", promoted: true}
+]
 
 @Component({
   selector: 'app-product',
@@ -6,6 +12,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
+
 
   constructor() { }
 
