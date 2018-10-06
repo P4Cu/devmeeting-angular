@@ -9,21 +9,38 @@ import { Product } from '../models';
 })
 export class FilterComponent implements OnInit {
 
-  public myInput = new FormControl();
-  @Output() public newFilterData = new EventEmitter();
+  private myInput = new FormControl();
 
-  constructor() {}
+  // filter have been updated. Provide data to update it.
+  // \param this
+  @Output() public update = new EventEmitter();
+
+  private sortByPrice?: boolean = null;
+
+  constructor() { }
 
   ngOnInit() {
-    this.myInput.valueChanges.subscribe( value => this.newFilterData.emit( this ))
+    this.myInput.valueChanges.subscribe(value => this.update.emit(this))
   }
 
-  public matches(data : Product) {
-    const filter = this.myInput.value
+  public onSortByPrice() {
+    console.log('sortByPrice')
+    this.update.emit(this)
+  }
+
+  public processData(products: Product[]) {
+    return products.filter(product => this.matches(product))
+  }
+
+  private matches(data: Product) {
+    const filter: string = this.myInput.value
+    if (filter === null)
+      return true;
+
     if (data.name.toLowerCase().match(filter))
       return true;
 
-    if ( data.tags && data.tags.some( tag => tag.match(filter)!==null ) )
+    if (data.tags && data.tags.some(tag => tag.match(filter) !== null))
       return true;
 
     return false;

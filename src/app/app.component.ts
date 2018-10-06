@@ -16,14 +16,14 @@ export class AppComponent implements OnInit {
     { name: "aAbbAC", price: 10.0, promoted: false, tags: ["brzydki"] },
   ]
 
-  filteredProductList: Product[] = [
-  ]
+  filteredProductList: Product[] = []
 
   ngOnInit() {
     this.filteredProductList = this.productList
   }
 
-  onNewFilter(filter) {
-    this.filteredProductList = this.productList.filter( element => filter.matches(element) )
+  onFilterUpdate(filter) {
+    console.log('onFilterUpdate', filter)
+    this.filteredProductList = filter.processData(this.productList)
   }
 }
