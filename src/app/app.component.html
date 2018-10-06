@@ -1,1 +1,2 @@
-<app-product-list [productList]="productList"></app-product-list>
+<app-filter (newFilterData)="onNewFilter($event)"></app-filter>
+<app-product-list [productList]="filteredProductList"></app-product-list>

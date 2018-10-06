@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { OnInit, Component } from '@angular/core';
 import { Product } from './models'
 
 @Component({
@@ -6,11 +6,22 @@ import { Product } from './models'
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  productList: Product[] = [
+  readonly productList: Product[] = [
     { name: "aa", price: 10, promoted: false, tags: ["tani", "brzydki"] },
     { name: "bb", price: 100, promoted: true }
   ]
-  title = 'devmeetings-angular';
+
+  filteredProductList: Product[] = [
+  ]
+
+  ngOnInit() {
+    this.filteredProductList = this.productList
+  }
+
+  onNewFilter(data) {
+    console.log(data)
+    this.filteredProductList = this.productList.filter(element => element.name.match(data))
+  }
 }
