@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductComponent } from '../product/product.component'
+import { PromotedProductComponent } from '../promoted-product/promoted-product.component'
 import { Product } from '../models'
 
 @Component({

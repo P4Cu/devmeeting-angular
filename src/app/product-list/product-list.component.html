@@ -1,9 +1,4 @@
-<div>Promoted items:
-  <app-product *ngFor="let item of promotedItems()" [element]="item"></app-product>
-</div>
-
-<br/>
-
-<div>Normal items:
-  <div *ngFor="let item of normalItems()">{{ item.name }} Cena:{{ item.price }}</div>
+<div>
+  <app-promoted-product *ngFor="let item of promotedItems()" [element]="item"></app-promoted-product>
+  <app-product *ngFor="let item of normalItems()" [element]="item"></app-product>
 </div>
