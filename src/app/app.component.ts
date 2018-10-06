@@ -23,8 +23,7 @@ export class AppComponent implements OnInit {
     this.filteredProductList = this.productList
   }
 
-  onNewFilter(data) {
-    console.log(data)
-    this.filteredProductList = this.productList.filter(element => element.name.toLowerCase().match(data.toLowerCase()))
+  onNewFilter(filter) {
+    this.filteredProductList = this.productList.filter( element => filter.matches(element) )
   }
 }
