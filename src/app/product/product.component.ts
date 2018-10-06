@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Product } from '../models'
 
 @Component({
@@ -8,21 +8,11 @@ import { Product } from '../models'
 })
 export class ProductComponent implements OnInit {
 
-  productList : Product[] = [
-    { name: "aa", price: 10, promoted: false},
-    { name: "bb", price:100, promoted: true}
-  ]
+  @Input() element : Product;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  promotedItems(){
-    return this.productList.filter( item => item.promoted );
-  }
-
-  normalItems(){
-    return this.productList.filter( item => !item.promoted );
-  }
 }
