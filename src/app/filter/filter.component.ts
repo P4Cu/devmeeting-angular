@@ -25,11 +25,21 @@ export class FilterComponent implements OnInit {
 
   public onSortByPrice() {
     console.log('sortByPrice')
+    if (this.sortByPrice)
+      this.sortByPrice = false;
+    else
+      this.sortByPrice = true;
     this.update.emit(this)
   }
 
   public processData(products: Product[]) {
-    return products.filter(product => this.matches(product))
+    let data = products.filter(product => this.matches(product))
+    if (this.sortByPrice == null)
+      return data
+    else if (this.sortByPrice == true)
+      return this.sort(data)
+    else
+      return this.sort(data).reverse()
   }
 
   private matches(data: Product) {
@@ -44,6 +54,10 @@ export class FilterComponent implements OnInit {
       return true;
 
     return false;
+  }
+
+  private sort(data: Product[]) {
+    return data.sort((a,b) => a.name.localeCompare(b.name))
   }
 
 }
