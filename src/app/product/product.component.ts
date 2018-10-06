@@ -9,8 +9,8 @@ import { Product } from '../models'
 export class ProductComponent implements OnInit {
 
   productList : Product[] = [
-    { name: "aa", promoted: false},
-    { name: "bb", promoted: true}
+    { name: "aa", price: 10, promoted: false},
+    { name: "bb", price:100, promoted: true}
   ]
 
   constructor() { }
@@ -18,4 +18,11 @@ export class ProductComponent implements OnInit {
   ngOnInit() {
   }
 
+  promotedItems(){
+    return this.productList.filter( item => item.promoted );
+  }
+
+  normalItems(){
+    return this.productList.filter( item => !item.promoted );
+  }
 }

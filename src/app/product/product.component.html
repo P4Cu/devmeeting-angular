@@ -1,1 +1,9 @@
-<div *ngFor="let item of productList">{{ item.name }} promoted:{{ item.promoted }}</div>
+<div>Promoted items:
+  <div *ngFor="let item of promotedItems()">{{ item.name }} Cena:{{ item.price }}</div>
+</div>
+
+<br/>
+
+<div>Normal items:
+  <div *ngFor="let item of normalItems()">{{ item.name }} Cena:{{ item.price }}</div>
+</div>
