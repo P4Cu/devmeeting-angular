@@ -9,7 +9,7 @@ import { Product } from './models'
 export class AppComponent {
 
   productList: Product[] = [
-    { name: "aa", price: 10, promoted: false },
+    { name: "aa", price: 10, promoted: false, tags: ["tani", "brzydki"] },
     { name: "bb", price: 100, promoted: true }
   ]
   title = 'devmeetings-angular';
