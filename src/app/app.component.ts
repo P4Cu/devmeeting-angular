@@ -1,5 +1,6 @@
-import { OnInit, Component } from '@angular/core';
+import { OnInit, Component, Inject } from '@angular/core';
 import { Product } from './models'
+import { ProductRepositoryService, ProductRepositoryToken } from './product-repository.service';
 
 @Component({
   selector: 'app-root',
@@ -8,22 +9,17 @@ import { Product } from './models'
 })
 export class AppComponent implements OnInit {
 
-  readonly productList: Product[] = [
-    { name: "aa", price: 10, promoted: false, tags: ["tani", "brzydki"] },
-    { name: "bb", price: 100, promoted: true },
-    { name: "AA", price: 100, promoted: true },
-    { name: "BB", price: 100, promoted: true },
-    { name: "aAbbAC", price: 10.0, promoted: false, tags: ["brzydki"] },
-  ]
+  constructor( @Inject(ProductRepositoryToken) private productRepository : ProductRepositoryService) {
+  }
 
   filteredProductList: Product[] = []
 
   ngOnInit() {
-    this.filteredProductList = this.productList
+    this.filteredProductList = this.productRepository.products()
   }
 
   onFilterUpdate(filter) {
     console.log('onFilterUpdate', filter)
-    this.filteredProductList = filter.processData(this.productList)
+    this.filteredProductList = filter.processData(this.productRepository.products())
   }
 }

@@ -7,6 +7,7 @@ import { ProductComponent } from './product/product.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { PromotedProductComponent } from './promoted-product/promoted-product.component';
 import { FilterComponent } from './filter/filter.component';
+import { ProductRepositoryToken, ProductRepositoryService } from './product-repository.service'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { FilterComponent } from './filter/filter.component';
     BrowserModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{provide: ProductRepositoryToken, useClass: ProductRepositoryService}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
